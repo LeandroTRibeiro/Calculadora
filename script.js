@@ -58,8 +58,7 @@ function contar() {
             alert('Conta Invalida!');
             return;
         } 
-        display.value = conta;
-        display.focus()  
+        display.value = conta;  
     } catch(e) {
         alert('Conta Invalida!');
         return;
