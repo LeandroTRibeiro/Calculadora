@@ -1,8 +1,57 @@
-const display = document.querySelector('#display');
+function Calculadora() {
+    this.display = document.querySelector('#display');
+    this.display.focus();
+    
+    this.startClick = () => {
+        document.addEventListener('click', e => {
+            const element = e.target;
+            if (element.classList.contains('btnum')) this.writeIn(element);
+            if (element.classList.contains('btnClear')) this.ClearDis();
+            if (element.classList.contains('btnDel')) this.delDis();
+            if (element.classList.contains('btnIg')) this.calcu();
+        });
+    };
 
-display.focus()
+    this.startKey = () => {
+        document.addEventListener('keyup', e => {
+            if (e.keyCode === 13) this.calcu();
+        });
+    };
 
-var goodKey = '0123456789+*/)(-.';
+    this.writeIn = element => {
+        this.display.value += element.innerText;
+        this.display.focus();
+    };
+    this.start = () => { 
+        this.startClick();
+        this.startKey();
+    };
+
+    this.ClearDis = () => this.display.value = ' ';
+
+    this.delDis = () => this.display.value = this.display.value.slice(0, -1);
+
+    this.calcu = () => { 
+        try {
+            const conta = eval(this.display.value);
+            if (!conta && conta !== 0) {
+                alert('Calculo Invalido!');
+                return;
+            }
+
+            this.display.value = conta;
+
+        } catch(e) {
+            alert('Calculo Invalido!');
+            return;
+        }
+    } ;   
+}
+
+const calculadora = new Calculadora();
+calculadora.start();
+
+const goodKey = '0123456789+*/)(-.';
 
 var checkInputTel = function(e) {
   var key = (typeof e.which == "number") ? e.which : e.keyCode;
@@ -12,7 +61,6 @@ var checkInputTel = function(e) {
   var filtered = this.value.split('').filter(filterInput);
   this.value = filtered.join("");
 
-  /* Prevents moving the pointer for a bad character */
   var move = (filterInput(String.fromCharCode(key)) || (key == 0 || key == 8)) ? 0 : 1;
   this.setSelectionRange(start - move, end - move);
 }
@@ -23,44 +71,3 @@ var filterInput = function(val) {
 
 display.addEventListener('input', checkInputTel);
 
-document.addEventListener('click', (e) => {
-    const el = e.target;
-    if(el.classList.contains('btnum')) digit(el.innerText);
-    if(el.classList.contains('btnClear')) clear();
-    if(el.classList.contains('btnAp')) correct();
-    if(el.classList.contains('btnIg')) contar();
-    
-});
-
-document.addEventListener('keyup', (e) => {
-    if(e.keyCode === 13) {
-        contar();
-    }
-});
-
-function digit(num) {
-    display.value += num;
-}
-
-function clear() {
-    display.value = ' ';
-}
-
-function correct() {
-    display.value = display.value.slice(0, -1);
-}
-
-function contar() {
-    let conta = display.value;
-    try {
-        conta = eval(conta);
-        if(!conta && conta !== 0) {
-            alert('Conta Invalida!');
-            return;
-        } 
-        display.value = conta;  
-    } catch(e) {
-        alert('Conta Invalida!');
-        return;
-    }
-}
