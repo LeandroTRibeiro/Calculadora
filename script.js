@@ -54,7 +54,7 @@ function contar() {
     let conta = display.value;
     try {
         conta = eval(conta);
-        if(!conta) {
+        if(!conta && conta !== 0) {
             alert('Conta Invalida!');
             return;
         } 

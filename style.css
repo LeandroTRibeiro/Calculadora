@@ -7,16 +7,15 @@
 }
 
 body {
-    background: blue url('pictures/cool-background.png' );
+    background: rgb(255, 255, 255) url('pictures/cool-background.png');
     text-align: center;
-
 }
 
 .container {
-    max-width: 360px;
+    max-width: 350px;
     background: white;
     margin: auto;
-    padding: 50px;
+    padding: 50px 15px 50px 15px;
     margin-top: 14vh;
     border-radius: 10px;
     box-shadow: 0px 0px 10px black;
@@ -31,6 +30,7 @@ table.cauculadora {
     max-width: 320px;
     font-size: 2.4em;
     text-align: right;
+    border-radius: 10px;
 }
 
 .btn {
@@ -38,6 +38,7 @@ table.cauculadora {
     height: 60px;
     font-size: 1em;
     border: 1px solid white;
+    border-radius: 10px;
     background: #bdbdbd;
 }
 
