@@ -11,9 +11,6 @@
  <a href="#autor">Autor</a>
 </p>
 
-<h4 align="center"> 
-	🚧  Em construção...  🚧
-</h4>
 
 <h2 id="demo">🕹️ Demo</h2>
 
@@ -27,8 +24,6 @@
 A seguinte linguagem foi usada neste projeto:
 
 - [JavaScript](https://www.javascript.com/)
-
-> Veja o arquivo  [package.json](https://github.com/LeandroTRibeiro/tasklist-app/blob/main/package.json)
 
 <h2 id="implantacao">📦 Implantação</h2>
 
